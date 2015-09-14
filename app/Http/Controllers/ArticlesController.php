@@ -17,6 +17,7 @@ class ArticlesController extends Controller
     {
         $this->middleware('auth',['except' => 'index']);
     }
+
    public function index()
    {
 
