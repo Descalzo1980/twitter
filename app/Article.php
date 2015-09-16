@@ -18,12 +18,12 @@ class Article extends Model
 
     public function scopePublished($query)
     {
-       $query->where('published_at','<=', Carbon::now())->get();
+       $query->where('published_at', '<=', Carbon::now())->get();
     }
 
     public function scopeUnpublished($query)
     {
-       $query->where('published_at','>', Carbon::now())->get();
+       $query->where('published_at', '>', Carbon::now())->get();
     }
 
     public function setPublishedAtAttribute($date)

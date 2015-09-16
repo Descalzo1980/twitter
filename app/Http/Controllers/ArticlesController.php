@@ -8,15 +8,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class ArticlesController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth',['except' => 'index']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth',['except' => ['index', 'show']]);
+//    }
 
    public function index()
    {
@@ -26,10 +27,12 @@ class ArticlesController extends Controller
        return view('articles.index', compact('articles'));
    }
 
-    public function show($id)
+    /**
+     * @param Article $article
+     * @return Response
+     */
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         return view('articles.show', compact('article'));
     }
 
@@ -47,23 +50,32 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
 
-        Article::create($request->all());
+        $article = new Article($request->all());
+
+        $article->user_id = Auth::id();
+
+        $article->save();
 
         return redirect('articles');
 
     }
 
-    public function edit($id)
+    /**
+     * @param Article $article
+     * @return Response
+     */
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         return view('articles.edit', compact('article'));
     }
 
-    public function update($id, ArticleRequest $request)
+    /**
+     * @param Article $article
+     * @param ArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Article $article, ArticleRequest $request)
     {
-        $article = Article::findOrFail($id);
-
         $article->update($request->all());
 
         return redirect('articles');
