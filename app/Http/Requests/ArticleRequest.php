@@ -26,7 +26,7 @@ class ArticleRequest extends Request
         return [
             'title'         => 'required|min:3',
             'body'          => 'required',
-            'published_at'  => 'required|date'
+            'published_at'  => 'required|date'// there should be a ban on a date earlier than today
         ];
     }
 }

@@ -14,10 +14,10 @@ use Auth;
 class ArticlesController extends Controller
 {
 
-//    public function __construct()
-//    {
-//        $this->middleware('auth',['except' => ['index', 'show']]);
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['index', 'show']]);
+    }
 
    public function index()
    {
@@ -51,10 +51,11 @@ class ArticlesController extends Controller
     {
 
         $article = new Article($request->all());
-
-        $article->user_id = Auth::id();
-
-        $article->save();
+//Толя прислал
+//        $article->user_id = Auth::id();
+//
+//        $article->save();
+        Auth::user()->articles()->save($article);
 
         return redirect('articles');
 

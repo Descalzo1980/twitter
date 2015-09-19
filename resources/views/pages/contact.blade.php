@@ -7,5 +7,5 @@
 @stop
 
 @section('footer')
-    <script>alert('Hello world');</script>
+
 @stop
