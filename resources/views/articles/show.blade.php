@@ -6,5 +6,8 @@
 
     <article>
         {{ $article->body }}
+        <div> {{ $article->user_id }}</div>
     </article>
+
+
 @stop
