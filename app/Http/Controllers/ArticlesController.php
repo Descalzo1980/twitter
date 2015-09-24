@@ -40,6 +40,7 @@ class ArticlesController extends Controller
     public function create()
     {
         $tags = Tag::lists('name', 'id');
+
         return view('articles.create', compact('tags'));
     }
 
@@ -56,7 +57,7 @@ class ArticlesController extends Controller
 
         Auth::user()->articles()->save($article);
 
-        $article->tags()->attach($request->input('tags'));
+        $article->tags()->attach($request->input('tag_list'));
 
         return redirect('articles');
 
@@ -68,7 +69,9 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit', compact('article'));
+        $tags = Tag::lists('name', 'id');
+
+        return view('articles.edit', compact('article', 'tags'));
     }
 
     /**

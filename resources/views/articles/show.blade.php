@@ -6,15 +6,16 @@
 
     <article>
         {{ $article->body }}
-        <div> {{ $article->user->username }}</div>
+        <div>Автор: {{ $article->user->username }}</div>
+
     </article>
 
     <h5>Tags:</h5>
     <ul>
-        @foreach($article->tags as $tag)
+          @foreach ($article->tags as $tag)
 
-            <li>{{ $tag->name }}</li>
+              <li>{{ $tag->name }}</li>
 
-        @endforeach
+          @endforeach
     </ul>
 @stop
