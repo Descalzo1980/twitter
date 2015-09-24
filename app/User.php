@@ -55,4 +55,13 @@ class User extends Model implements AuthenticatableContract,
 //    {
 //        return $this->hasMany('App\User');
 //    }
+    public function following()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'followed_user_id', 'user_id');
+    }
 }

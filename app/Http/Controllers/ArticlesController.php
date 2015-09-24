@@ -6,6 +6,7 @@ use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
@@ -38,7 +39,8 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('articles.create');
+        $tags = Tag::lists('name');
+        return view('articles.create', compact('tags'));
     }
 
     /**

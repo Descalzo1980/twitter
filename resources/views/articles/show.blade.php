@@ -6,7 +6,7 @@
 
     <article>
         {{ $article->body }}
-        <div> {{ $article->user_id }}</div>
+        <div> {{ $article->user->username }}</div>
     </article>
 
 

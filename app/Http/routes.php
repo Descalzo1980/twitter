@@ -13,7 +13,10 @@
 Route::get('/', 'PagesController@contact');
 Route::get('contact', 'PagesController@contact');
 Route::get('about', 'PagesController@about');
+
 Route::resource('articles', 'ArticlesController');
+Route::get('follower', 'FollowerController@follower');
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' =>'Auth\PasswordController'
@@ -28,5 +31,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
 
 

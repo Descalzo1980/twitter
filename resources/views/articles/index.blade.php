@@ -10,12 +10,14 @@
             <h2>
 
             <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
+
             {{--<a href="{{ action('ArticlesController@show', [$article->id]) }}">{{ $article->title }}</a>--}}
             {{--<a href="{{ url('/articles',$article->id) }}">{{ $article->title }}</a>--}}
 
             </h2>
 
             <div class="body">{{ $article->body }}</div>
+            <div> {{ $article->user->username }}</div>
         </article>
      @endforeach
 @stop
