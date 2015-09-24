@@ -39,7 +39,7 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        $tags = Tag::lists('name');
+        $tags = Tag::lists('name', 'id');
         return view('articles.create', compact('tags'));
     }
 
@@ -53,11 +53,10 @@ class ArticlesController extends Controller
     {
 
         $article = new Article($request->all());
-//Толя прислал
-//        $article->user_id = Auth::id();
-//
-//        $article->save();
+
         Auth::user()->articles()->save($article);
+
+        $article->tags()->attach($request->input('tags'));
 
         return redirect('articles');
 
