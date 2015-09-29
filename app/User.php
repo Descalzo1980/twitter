@@ -37,6 +37,12 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function stream()
+    {
+        $followedIds = $this->followed()->get()->lists('id')->toArray();
+        return Article::whereIn('user_id', $followedIds);
+    }
+
     /**
      * A user can have many articles
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -51,10 +57,6 @@ class User extends Model implements AuthenticatableContract,
         return true;// middleware show text see routes
     }
 
-//    public function followers()
-//    {
-//        return $this->hasMany('App\User');
-//    }
     public function following()
     {
         return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id');
@@ -62,6 +64,11 @@ class User extends Model implements AuthenticatableContract,
 
     public function followers()
     {
-        return $this->belongsToMany('App\User', 'followers', 'followed_user_id', 'user_id');
+        return $this->belongsToMany('App\User', 'followers', 'followed_user_id', 'user_id')->withTimestamps();
+    }
+
+    public function followed()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id')->withTimestamps();
     }
 }

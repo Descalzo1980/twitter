@@ -22,9 +22,7 @@ class ArticlesController extends Controller
 
    public function index()
    {
-
-       $articles = Article::latest('published_at')->published()->get();
-
+       $articles = Article::latest('published_at')->published()->with('user')->get();
        return view('articles.index', compact('articles'));
    }
 

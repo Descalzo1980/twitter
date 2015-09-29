@@ -15,6 +15,8 @@ Route::get('contact', 'PagesController@contact');
 Route::get('about', 'PagesController@about');
 
 Route::resource('articles', 'ArticlesController');
+Route::resource('users', 'UsersController');
+Route::resource('stream', 'UsersController@stream');
 Route::get('follower', 'FollowerController@follower');
 
 Route::controllers([
