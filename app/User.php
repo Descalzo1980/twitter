@@ -71,4 +71,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id')->withTimestamps();
     }
+
+    public function subscribe()
+    {
+        return $this->belongsToMany('App\User','subscribe', 'user_id', 'subscribe_user_id')->withTimestamps();
+    }
 }

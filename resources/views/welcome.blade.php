@@ -12,7 +12,7 @@
 
             body {
                 margin: 0;
-                padding: 0;
+                padding: 60px;
                 width: 100%;
                 display: table;
                 font-weight: 100;

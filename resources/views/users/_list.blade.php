@@ -5,6 +5,7 @@
             @foreach($users as $user)
                 <li>
                     @include('users._link')
+
                 </li>
             @endforeach
         </ul>

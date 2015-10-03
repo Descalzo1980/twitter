@@ -30,5 +30,13 @@ class UsersController extends Controller
         $stream = Auth::user()->stream()->paginate(10);
         return view('users.stream', compact('stream'));
     }
+    public function subscribe($userId)
+    {
+//        $subscribe = Auth::user()->subscribe()->paginate(10);
+//        return view('users.subscribe', compact('subscribe'));
+        $user = User::findOrFail($userId);
+        $user->load(['subscribe_user_id','subscribe']);
+        return view('users.subscribe', compact('subscribe'));
+    }
 
 }

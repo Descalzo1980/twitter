@@ -12,7 +12,7 @@
             </div>
 
             <div>
-                @include('users._link', ['user' => $article->user]);
+                @include('users._link', ['user' => $article->user])
             </div>
         </article>
     @endforeach
