@@ -1,11 +1,13 @@
 @extends('app')
 
 @section('content')
-
-@foreach ($users as $user) {
+<ul>
+@foreach ($users as $user)
+      <li>
     {{ $user->username }};
-}
+     </li>
 @endforeach
+ </ul>
 @stop
 
 
