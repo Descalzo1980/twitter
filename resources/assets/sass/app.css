@@ -1,0 +1,7 @@
+body {
+  padding-top: 660px;
+}
+
+body, label, .checkbox label {
+    font-weight: 300;
+}
