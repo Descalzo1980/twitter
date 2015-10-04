@@ -13,10 +13,10 @@ use App\Http\Controllers\Controller;
 class UsersController extends Controller
 {
 
-    public function index($userId)
+    public function index()
     {
-        $user = User::findOrFail($userId);
-        return view('users.user',compact('user'));
+        $users = User::all();
+        return view('users.user',compact('users'));
     }
     /**
      * Display the specified resource.
