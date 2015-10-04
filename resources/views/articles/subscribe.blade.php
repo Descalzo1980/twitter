@@ -4,9 +4,7 @@
 @section('content')
 
     <div>
-         @include('users.subscribe', ['subscribe' => 'Подписаться'])
+         @include('users._subscribe', ['subscribe' => 'Подписаться'])
     </div>
-
-
 
 @stop

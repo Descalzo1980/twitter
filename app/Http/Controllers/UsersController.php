@@ -12,6 +12,12 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
+
+    public function index($userId)
+    {
+        $user = User::findOrFail($userId);
+        return view('users.user',compact('user'));
+    }
     /**
      * Display the specified resource.
      *
@@ -30,13 +36,12 @@ class UsersController extends Controller
         $stream = Auth::user()->stream()->paginate(10);
         return view('users.stream', compact('stream'));
     }
-    public function subscribe($userId)
+    public function subscribe()
     {
-//        $subscribe = Auth::user()->subscribe()->paginate(10);
+//        $user = User::findOrFail($userId);
+//        $user->load(['subscribe_user_id','subscribe']);
 //        return view('users.subscribe', compact('subscribe'));
-        $user = User::findOrFail($userId);
-        $user->load(['subscribe_user_id','subscribe']);
-        return view('users.subscribe', compact('subscribe'));
+        return view('users.subscribe');
     }
 
 }

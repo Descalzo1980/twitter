@@ -16,6 +16,7 @@ Route::get('about', 'PagesController@about');
 
 Route::resource('articles', 'ArticlesController');
 Route::resource('users', 'UsersController');
+Route::resource('user', 'UsersController');
 Route::resource('stream', 'UsersController@stream');
 Route::resource('subscribe', 'UsersController@subscribe');
 Route::get('uploadcat', 'UploadcatController@uploadcat');
