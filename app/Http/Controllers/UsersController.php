@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Follower;
 use App\User;
 use Auth;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.user',compact('users'));
+        return view('users.users',compact('users'));
     }
     /**
      * Display the specified resource.
@@ -36,12 +38,17 @@ class UsersController extends Controller
         $stream = Auth::user()->stream()->paginate(10);
         return view('users.stream', compact('stream'));
     }
-    public function subscribe()
+
+    public function follow($id)
     {
-//        $user = User::findOrFail($userId);
-//        $user->load(['subscribe_user_id','subscribe']);
-//        return view('users.subscribe', compact('subscribe'));
-        return view('users.subscribe');
+        Auth::user()->following()->attach($id);
+        return route('followers');
+    }
+
+    public function showFollowers()
+    {
+        $users = Auth::user()->followed()->get();
+        return view('users.users', compact('users'));
     }
 
 }

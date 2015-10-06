@@ -6,6 +6,6 @@
 
     <hr/>
     @include('articles._list')
-    {{--@include('articles.subscribe')--}}
+
 
  @stop

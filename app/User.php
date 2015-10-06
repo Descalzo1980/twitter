@@ -43,13 +43,7 @@ class User extends Model implements AuthenticatableContract,
         return Article::whereIn('user_id', $followedIds);
     }
 
-    public function subscribe()
-    {
-        $subscribeIds = $this->subscribe()->get()->lists('id')->toArray();
-        return User::whereIn('subscribe_id', $subscribeIds);
-    }
-
-    /**
+     /**
      * A user can have many articles
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -65,7 +59,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function following()
     {
-        return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id');
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id')->withTimestamps();
     }
 
     public function followers()
@@ -78,8 +72,14 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('App\User', 'followers', 'user_id', 'followed_user_id')->withTimestamps();
     }
 
-    public function subscribed()
-    {
-        return $this->belongsToMany('App\User','subscribe', 'user_id', 'subscribe_user_id')->withTimestamps();
-    }
+//    public function subscribed()
+//    {
+//        return $this->belongsToMany('App\User','subscribe', 'user_id', 'subscribe_user_id')->withTimestamps();
+//    }
+//
+//    public function subscribe()
+//    {
+//        $subscribeIds = $this->subscribe()->get()->lists('id')->toArray();
+//        return User::whereIn('subscribe_id', $subscribeIds);
+//    }
 }

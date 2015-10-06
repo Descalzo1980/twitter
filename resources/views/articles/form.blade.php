@@ -23,7 +23,3 @@
 <div class="form-group">
 {!! Form::submit($submitButtonText,['class' => 'btn btn-primary form-control']) !!}
 </div>
-
-{{--<div class="form-group">--}}
-{{--{!! Form::submit($subscribe,['class' => 'btn btn-primary form-control']) !!}--}}
-{{--</div>--}}

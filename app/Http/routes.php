@@ -18,7 +18,8 @@ Route::resource('articles', 'ArticlesController');
 Route::resource('users', 'UsersController');
 Route::resource('user', 'UsersController');
 Route::resource('stream', 'UsersController@stream');
-Route::resource('subscribe', 'UsersController@subscribe');
+Route::post('followed', 'UsersController@follow');
+Route::get('followers', ['as'=> 'followers', 'uses' =>'UsersController@showFollowers']);
 Route::get('uploadcat', 'UploadcatController@uploadcat');
 
 Route::controllers([

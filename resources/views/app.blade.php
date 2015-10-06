@@ -28,8 +28,9 @@ body {
             <li class="active"><a href="http://twitter.app:8000/articles">Home</a></li>
              <li><a href="http://twitter.app:8000">Contact</a></li>
             <li><a href="http://twitter.app:8000/articles/create">Create</a></li>
-            <li><a href="http://twitter.app:8000/user">Users</a></li>
+            <li><a href="http://twitter.app:8000/users">Users</a></li>
             <li><a href="http://twitter.app:8000/uploadcat">AddCat</a></li>
+            <li><a href="http://twitter.app:8000/followers">Followers</a></li>
           </ul>
         </div>
       </div>

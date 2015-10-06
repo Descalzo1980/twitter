@@ -14,7 +14,11 @@
             <div>
                 @include('users._link', ['user' => $article->user])
             </div>
-        </article>
+
+            <div>
+                @include('users._subscribe', ['user' => $article->user])
+            </div>
+            </article>
     @endforeach
 @else
     Here is nothing :(
